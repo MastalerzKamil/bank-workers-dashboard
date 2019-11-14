@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-import { ApplicationsTable, ApplicationsToolbar } from './components';
+import { ApplicationsToolbar } from 'containers'
+import { ApplicationsTable } from './components';
 import mockData from './data';
 
 const useStyles = makeStyles(theme => ({

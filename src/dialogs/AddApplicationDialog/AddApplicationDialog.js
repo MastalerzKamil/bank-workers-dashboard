@@ -17,7 +17,7 @@ const AddApplicationDialog = (props) => {
   return (
     <Dialog
       aria-labelledby="form-dialog-title"
-      onClose={hideDialog}
+      onClose={() => hideDialog()}
       open={openedDialog}
     >
       <DialogTitle id="form-dialog-title">Składanie wniosku</DialogTitle>
@@ -53,13 +53,13 @@ const AddApplicationDialog = (props) => {
       <DialogActions>
         <Button
           color="primary"
-          onClick={hideDialog}
+          onClick={() => hideDialog()}
         >
         Cancel
         </Button>
         <Button
           color="primary"
-          onClick={hideDialog}
+          onClick={() => hideDialog()}
         >
         Subscribe
         </Button>

@@ -31,6 +31,7 @@ const ApplicationToolbar = (props) => {
         <span className={classes.spacer} />
         <Button
           color="primary"
+          onClick={() => actions.showDialog()}
           variant="contained"
         >
           Dodaj wniosek
@@ -42,7 +43,7 @@ const ApplicationToolbar = (props) => {
 
 ApplicationToolbar.propTypes = {
   actions: PropTypes.shape({
-    openDialog: PropTypes.func.isRequired,
+    showDialog: PropTypes.func.isRequired,
     hideDialog: PropTypes.func.isRequired,
   }),
   className: PropTypes.string
