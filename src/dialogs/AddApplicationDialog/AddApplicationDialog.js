@@ -11,12 +11,13 @@ import {
 
 import { PropTypes } from 'prop-types';
 
-const AddApplicationDialog = ({ openedDialog, actions }) => {
-  const { hideModal } = actions;
+const AddApplicationDialog = (props) => {
+  const { actions, openedDialog } = props;
+  const { hideDialog } = actions;
   return (
     <Dialog
       aria-labelledby="form-dialog-title"
-      onClose={hideModal}
+      onClose={hideDialog}
       open={openedDialog}
     >
       <DialogTitle id="form-dialog-title">Składanie wniosku</DialogTitle>
@@ -52,13 +53,13 @@ const AddApplicationDialog = ({ openedDialog, actions }) => {
       <DialogActions>
         <Button
           color="primary"
-          onClick={hideModal}
+          onClick={hideDialog}
         >
         Cancel
         </Button>
         <Button
           color="primary"
-          onClick={hideModal}
+          onClick={hideDialog}
         >
         Subscribe
         </Button>
@@ -73,8 +74,8 @@ AddApplicationDialog.defaultProps = {
 
 AddApplicationDialog.propTypes = {
   actions: PropTypes.shape({
-    showModal: PropTypes.func.isRequired,
-    hideModal: PropTypes.func.isRequired,
+    showDialog: PropTypes.func.isRequired,
+    hideDialog: PropTypes.func.isRequired,
   }).isRequired,
   openedDialog: PropTypes.func.isRequired,
 }

@@ -1,7 +1,7 @@
 import DialogReducer from './DialogReducer';
-import { combineReducer } from 'redux';
+import { combineReducers } from 'redux';
 
-const rootReducer = combineReducer({
+const rootReducer = combineReducers({
   DialogReducer
 })
 

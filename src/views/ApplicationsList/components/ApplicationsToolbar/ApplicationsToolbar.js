@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
@@ -15,13 +15,10 @@ const useStyles = makeStyles(theme => ({
   spacer: {
     flexGrow: 1
   },
-  addPoints: {
-    marginRight: theme.spacing(1)
-  },
 }));
 
-const UsersToolbar = props => {
-  const { className, ...rest } = props;
+const ApplicationToolbar = (props) => {
+  const {actions, className, ...rest} = props;
 
   const classes = useStyles();
 
@@ -32,20 +29,23 @@ const UsersToolbar = props => {
     >
       <div className={classes.row}>
         <span className={classes.spacer} />
-        <Button className={classes.addPoints}>Dodaj punkty</Button>
         <Button
           color="primary"
           variant="contained"
         >
-          Dodaj pracownika
+          Dodaj wniosek
         </Button>
       </div>
     </div>
   );
-};
+}
 
-UsersToolbar.propTypes = {
+ApplicationToolbar.propTypes = {
+  actions: PropTypes.shape({
+    openDialog: PropTypes.func.isRequired,
+    hideDialog: PropTypes.func.isRequired,
+  }),
   className: PropTypes.string
-};
+}
 
-export default UsersToolbar;
+export default ApplicationToolbar;

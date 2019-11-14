@@ -1,1 +1,1 @@
-export { default } from './AddApplicationDialogDialog';
+export { default } from './AddApplicationDialog';

@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
-import { AddApplicationDialog } from 'dialogs';
+import { AddApplicationDialog } from 'containers';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -171,7 +171,7 @@ const ApplicationsTable = props => {
           />
         </CardActions>
       </Card>
-      <AddApplicationDialog isOpenedDialog={openDialog} handleClose={handleCloseDialog}/>
+      <AddApplicationDialog />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import DialogActions from 'actions';
-import AddApplicationDialog from 'dialogs';
+import * as DialogActions from 'actions/DialogActions/pure';
+import { AddApplicationDialog } from 'dialogs';
 
 const mapStateToProps = (state) => state.DialogReducer;
 

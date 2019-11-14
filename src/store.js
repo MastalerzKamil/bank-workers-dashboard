@@ -2,4 +2,6 @@ import { createStore } from 'redux';
 
 import reducers from 'reducers'
 
-export default createStore()
+export default createStore(
+  reducers,
+)
