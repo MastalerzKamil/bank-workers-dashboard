@@ -10,7 +10,7 @@ import {
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 150
   },
   selectEmpty: {
     marginTop: theme.spacing(2)
@@ -22,6 +22,7 @@ const AddApplicationForm = () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     clientType: '',
+    loanType: '',
   });
 
   const inputLabel = React.useRef(null);
@@ -63,6 +64,39 @@ const AddApplicationForm = () => {
           <option value={'company'}>Firma</option>
         </Select>
       </FormControl>
+      <FormControl
+        className={classes.formControl}
+        variant="outlined"
+      >
+        <InputLabel
+          htmlFor="outlined-age-native-simple"
+          ref={inputLabel}
+        >
+          Rodzaj kredytu
+        </InputLabel>
+        <Select
+          inputProps={{
+            name: 'loanType',
+            id: 'outlined-age-native-simple'
+          }}
+          labelWidth={labelWidth}
+          native
+          onChange={handleChange('loanType')}
+          value={state.loanType}
+        >
+          <option value="" />
+          <option value={'studentLoan'}>Studencki</option>
+          <option value={'flatLoan'}>Hipoteczny</option>
+        </Select>
+      </FormControl>
+      <TextField
+        autoFocus
+        fullWidth
+        id="amount"
+        label="Kwota"
+        margin="dense"
+        type="number"
+      />
       <TextField
         autoFocus
         fullWidth
