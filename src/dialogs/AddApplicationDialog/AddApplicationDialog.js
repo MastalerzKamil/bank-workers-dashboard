@@ -2,18 +2,19 @@ import React from 'react';
 import {
   Dialog,
   DialogTitle,
-  TextField,
   Button,
   DialogActions,
   DialogContent,
   DialogContentText,
 } from '@material-ui/core';
+import AddApplicationForm from './AddApplicationForm';
 
 import { PropTypes } from 'prop-types';
 
 const AddApplicationDialog = (props) => {
   const { actions, openedDialog } = props;
   const { hideDialog } = actions;
+
   return (
     <Dialog
       aria-labelledby="form-dialog-title"
@@ -25,30 +26,7 @@ const AddApplicationDialog = (props) => {
         <DialogContentText>
           Formularz do składania wniosku
         </DialogContentText>
-        <TextField
-          autoFocus
-          fullWidth
-          id="name"
-          label="Imię"
-          margin="dense"
-          type="email"
-        />
-        <TextField
-          autoFocus
-          fullWidth
-          id="name"
-          label="Email Address"
-          margin="dense"
-          type="email"
-        />
-        <TextField
-          autoFocus
-          fullWidth
-          id="name"
-          label="Email Address"
-          margin="dense"
-          type="email"
-        />
+        <AddApplicationForm/>
       </DialogContent>
       <DialogActions>
         <Button
