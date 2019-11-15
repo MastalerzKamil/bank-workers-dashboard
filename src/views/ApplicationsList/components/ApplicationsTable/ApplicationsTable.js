@@ -19,6 +19,7 @@ import {
 } from '@material-ui/core';
 
 import { getInitials } from 'helpers';
+import { AddApplicationDialog } from 'containers';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -48,6 +49,8 @@ const ApplicationsTable = props => {
   const [selectedApplicants, setSelectedApplicants] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(0);
+
+  const [openDialog, setOpenDialog] = useState(false);
   /*
   const handleSelectAll = event => {
     const { applicants } = props;
@@ -62,6 +65,7 @@ const ApplicationsTable = props => {
 
     setSelectedUsers(selectedApplicants);
   };
+  */
 
   const handleSelectOne = (event, id) => {
     const selectedIndex = selectedApplicants.indexOf(id);
@@ -80,9 +84,16 @@ const ApplicationsTable = props => {
       );
     }
 
-    setSelectedUsers(newSelectedUsers);
+    setSelectedApplicants(newSelectedUsers);
   };
-  */
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false)
+  }
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  }
 
   const handlePageChange = (event, page) => {
     setPage(page);
@@ -93,72 +104,75 @@ const ApplicationsTable = props => {
   };
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <CardContent className={classes.content}>
-        <PerfectScrollbar>
-          <div className={classes.inner}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Klient</TableCell>
-                  <TableCell>Typ wniosku</TableCell>
-                  <TableCell>kwota</TableCell>
-                  <TableCell>data</TableCell>
-                  <TableCell/>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {applicants.slice(0, rowsPerPage).map(element => (
-                  <TableRow
-                    className={classes.tableRow}
-                    hover
-                    key={element.id}
-                    selected={selectedApplicants.indexOf(element.id) !== -1}
-                  >
-                    <TableCell>
-                      <div className={classes.nameContainer}>
-                        <Avatar
-                          className={classes.avatar}
-                          src={element.avatarUrl}
-                        >
-                          {getInitials(element.firstName)}{' '} {getInitials(element.lastName)}
-                        </Avatar>
-                        <Typography variant="body1">{element.client.firstName}{' '}{element.client.lastName}</Typography>
-                      </div>
-                    </TableCell>
-                    <TableCell>{element.type}</TableCell>
-                    <TableCell>{element.amount}</TableCell>
-                    <TableCell>{element.data}</TableCell>
-                    <TableCell>
-                      <Button
-                        color="primary"
-                        variant="contained"
-                      >
-                        Rozpatrz
-                      </Button>
-                    </TableCell>
+    <div>
+            <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <CardContent className={classes.content}>
+          <PerfectScrollbar>
+            <div className={classes.inner}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Klient</TableCell>
+                    <TableCell>Typ wniosku</TableCell>
+                    <TableCell>kwota</TableCell>
+                    <TableCell>data</TableCell>
+                    <TableCell/>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </PerfectScrollbar>
-      </CardContent>
-      <CardActions className={classes.actions}>
-        <TablePagination
-          component="div"
-          count={applicants.length}
-          onChangePage={handlePageChange}
-          onChangeRowsPerPage={handleRowsPerPageChange}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          rowsPerPageOptions={[5, 10, 25]}
-        />
-      </CardActions>
-    </Card>
+                </TableHead>
+                <TableBody>
+                  {applicants.slice(0, rowsPerPage).map(element => (
+                    <TableRow
+                      className={classes.tableRow}
+                      hover
+                      key={element.id}
+                      selected={selectedApplicants.indexOf(element.id) !== -1}
+                    >
+                      <TableCell>
+                        <div className={classes.nameContainer}>
+                          <Avatar
+                            className={classes.avatar}
+                            src={element.avatarUrl}
+                          >
+                            {getInitials(element.firstName)}{' '} {getInitials(element.lastName)}
+                          </Avatar>
+                          <Typography variant="body1">{element.client.firstName}{' '}{element.client.lastName}</Typography>
+                        </div>
+                      </TableCell>
+                      <TableCell>{element.type}</TableCell>
+                      <TableCell>{element.amount}</TableCell>
+                      <TableCell>{element.data}</TableCell>
+                      <TableCell>
+                        <Button
+                          color="primary"
+                          variant="contained"
+                        >
+                          Rozpatrz
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </PerfectScrollbar>
+        </CardContent>
+        <CardActions className={classes.actions}>
+          <TablePagination
+            component="div"
+            count={applicants.length}
+            onChangePage={handlePageChange}
+            onChangeRowsPerPage={handleRowsPerPageChange}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            rowsPerPageOptions={[5, 10, 25]}
+          />
+        </CardActions>
+      </Card>
+      <AddApplicationDialog />
+    </div>
   );
 };
 

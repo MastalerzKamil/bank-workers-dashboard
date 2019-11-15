@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 
+import { ApplicationsToolbar } from 'containers'
 import { ApplicationsTable } from './components';
 import mockData from './data';
 
@@ -20,6 +21,7 @@ const ApplicationsList = () => {
 
   return (
     <div className={classes.root}>
+      <ApplicationsToolbar />
       <div className={classes.content}>
         <ApplicationsTable applicants={applicants} />
       </div>
