@@ -33,13 +33,13 @@ const AddApplicationDialog = (props) => {
           color="primary"
           onClick={() => hideDialog()}
         >
-        Cancel
+        Anuluj
         </Button>
         <Button
           color="primary"
           onClick={() => hideDialog()}
         >
-        Subscribe
+        Dodaj
         </Button>
       </DialogActions>
     </Dialog>
