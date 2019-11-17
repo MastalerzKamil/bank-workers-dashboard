@@ -8,6 +8,7 @@ import ListIcon from '@material-ui/icons/List';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import ReportIcon from '@material-ui/icons/Report';
 
 import { Profile, SidebarNav } from './components';
 
@@ -49,6 +50,11 @@ const Sidebar = props => {
       title: 'Wnioski',
       href: '/applications',
       icon: <ListIcon />
+    },
+    {
+      title: 'Wyłudzenia',
+      href: '/exortions',
+      icon: <ReportIcon />
     },
     {
       title: 'Logowanie',

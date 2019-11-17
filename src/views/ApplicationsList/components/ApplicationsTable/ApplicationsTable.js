@@ -105,7 +105,7 @@ const ApplicationsTable = props => {
 
   return (
     <div>
-            <Card
+      <Card
         {...rest}
         className={clsx(classes.root, className)}
       >
