@@ -1,0 +1,11 @@
+export const HOME = '/';
+export const DASHBOARD = '/dashboard';
+export const APPLICATIONS = '/applications';
+export const EXORTIONS = '/exortions';
+export const USERS = '/users';
+export const SINGLE_APPLICATION = (id = ':id') => `/application/${id}`;
+export const ACCOUNT = '/account';
+export const SETTINGS = '/settings';
+export const SIGN_UP = '/sign-up';
+export const SIGN_IN = '/sign-in';
+export const NOT_FOUND = '/not-found';

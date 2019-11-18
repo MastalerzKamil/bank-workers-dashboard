@@ -3,7 +3,7 @@ import uuid from 'uuid/v1';
 export default [
   {
     id: uuid(),
-    applicantId: 1,
+    applicationId: 1,
     client: {
       firstName: 'Carlo',
       lastName: 'Benitez',
@@ -14,7 +14,7 @@ export default [
   },
   {
     id: uuid(),
-    applicantId: 1,
+    applicationId: 2,
     client: {
       firstName: 'Jan',
       lastName: 'Kowalski',
