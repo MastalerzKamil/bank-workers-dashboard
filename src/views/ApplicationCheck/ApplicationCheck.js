@@ -1,5 +1,8 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import {
+  TextField,
+  Button
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 
@@ -9,6 +12,12 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  buttonsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    margin: theme.spacing(10)
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -99,6 +108,26 @@ const ApplicationCheck = props => {
           label="PESEL"
           margin="normal"
         />
+      </div>
+      <div className={classes.buttonsContainer}>
+        <Button
+          color="primary"
+          variant="contained"
+        >
+          Pozytywny
+        </Button>
+        <Button
+          color="primary"
+          variant="contained"
+        >
+          Negatywny
+        </Button>
+        <Button
+          color="secondary"
+          variant="contained"
+        >
+          Zgłoś
+        </Button>
       </div>
     </form>
   );
