@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -20,6 +21,8 @@ import {
 
 import { getInitials } from 'helpers';
 import { AddApplicationDialog } from 'containers';
+
+import * as router from 'constants/routes';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -145,12 +148,14 @@ const ApplicationsTable = props => {
                       <TableCell>{element.amount}</TableCell>
                       <TableCell>{element.data}</TableCell>
                       <TableCell>
-                        <Button
-                          color="primary"
-                          variant="contained"
-                        >
+                        <Link to={router.SINGLE_APPLICATION(element.applicationId)}>
+                          <Button
+                            color="primary"
+                            variant="contained"
+                          >
                           Rozpatrz
-                        </Button>
+                          </Button>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   ))}
