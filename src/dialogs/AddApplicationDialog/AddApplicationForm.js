@@ -31,7 +31,7 @@ const AddApplicationForm = () => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
-  const  = name => event => {
+  const handleChange = name => event => {
     setState({
       ...state,
       [name]: event.target.value

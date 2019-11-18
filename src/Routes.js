@@ -14,8 +14,11 @@ import {
   SignUp as SignUpView,
   SignIn as SignInView,
   NotFound as NotFoundView,
-  ApplicationCheck as ApplicationCheckView
 } from './views';
+
+import {
+  ApplicationCheck as ApplicationCheckView,
+} from 'containers';
 
 import * as routes from 'constants/routes';
 

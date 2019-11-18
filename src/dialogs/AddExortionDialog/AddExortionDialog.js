@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogContentText,
 } from '@material-ui/core';
-import { AddExortionForm } from './AddExortionForm';
+import { AddExortionForm } from './components';
 
 import { PropTypes } from 'prop-types';
 

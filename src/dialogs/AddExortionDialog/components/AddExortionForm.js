@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   input: {
-    width: theme.spacing(2)
+    width: theme.spacing(25)
   },
-  buttonsSection: {
+  container: {
     display: 'flex',
-    justifyContent: 'space-between',
-    margin: theme.spacing(20),
+    flexDirection: 'column',
+    alignItems: 'center',
   }
 }));
 
@@ -32,7 +32,7 @@ const AddExortionForm = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       <TextField
         autoFocus
         className={classes.input}
