@@ -9,8 +9,8 @@ import {
 } from '@material-ui/core';
 import AddApplicationForm from './AddApplicationForm';
 import { SentForm } from './components';
-
 import { PropTypes } from 'prop-types';
+import * as api from 'common/api';
 
 const AddApplicationDialog = (props) => {
   const { actions, openedDialog } = props;
@@ -38,12 +38,17 @@ const AddApplicationDialog = (props) => {
     });
   };
 
+  const makeRequest = async() => {
+    await api.postApplication(state)
+  }
+
   const handleCloseSendForm = () => {
     setSendApplication(false);
   }
 
   const handleOpenSendForm = () => {
     setSendApplication(true);
+    makeRequest();
     hideDialog();
   }
 
