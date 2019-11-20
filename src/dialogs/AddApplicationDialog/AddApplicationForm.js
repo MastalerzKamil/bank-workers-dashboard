@@ -6,6 +6,7 @@ import {
   InputLabel,
   Select
 } from '@material-ui/core';
+import { PropTypes } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,25 +19,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const AddApplicationForm = () => {
+const AddApplicationForm = (props) => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    clientType: '',
-    loanType: '',
-  });
+
+  const { state, handleChange} = props;
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-
-  const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
-  };
   return(
     <div>
       <FormControl
@@ -125,7 +117,7 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingStreet"
+        id="homeStreet"
         label="ulica"
         margin="dense"
         type="text"
@@ -133,7 +125,7 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingCity"
+        id="homeCity"
         label="miasto"
         margin="dense"
         type="text"
@@ -141,7 +133,7 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingCode"
+        id="homePostalCode"
         label="kod pocztowy"
         margin="dense"
         type="text"
@@ -150,7 +142,7 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingStreet"
+        id="mailingStreet"
         label="ulica"
         margin="dense"
         type="text"
@@ -158,7 +150,7 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingCity"
+        id="mailingCity"
         label="miasto"
         margin="dense"
         type="text"
@@ -166,13 +158,18 @@ const AddApplicationForm = () => {
       <TextField
         autoFocus
         fullWidth
-        id="livingCode"
+        id="mailingPostalCode"
         label="kod pocztowy"
         margin="dense"
         type="text"
       />
     </div>
   );
+}
+
+AddApplicationForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
 }
 
 export default AddApplicationForm;
