@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import { ApplicationsToolbar } from 'containers'
 import { ApplicationsTable } from './components';
-import mockData from './data';
+import * as api from 'common/api';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +17,12 @@ const useStyles = makeStyles(theme => ({
 const ApplicationsList = () => {
   const classes = useStyles();
 
-  const [applicants] = useState(mockData);
+  const [applicants, setApplicants] = useState([]);
+
+  React.useEffect(async () => {
+    const fetchedApplicants = await api.getApplications();
+    setApplicants(fetchedApplicants);
+  },[applicants]);
 
   return (
     <div className={classes.root}>
