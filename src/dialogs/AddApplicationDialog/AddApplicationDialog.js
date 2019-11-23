@@ -11,6 +11,7 @@ import AddApplicationForm from './AddApplicationForm';
 import { SentForm } from './components';
 import { PropTypes } from 'prop-types';
 import * as api from 'common/api';
+import * as parser from 'common/floatParser';
 
 const AddApplicationDialog = (props) => {
   const { actions, openedDialog } = props;
@@ -19,7 +20,7 @@ const AddApplicationDialog = (props) => {
   const [state, setState] = React.useState({
     clientType: '',
     loanType: '',
-    amount: '',
+    amount: '0.0',
     firstName: '',
     lastName: '',
     homeStreet: '',
@@ -32,23 +33,34 @@ const AddApplicationDialog = (props) => {
 
   const [sendApplication, setSendApplication] = React.useState(false);
   const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
+    if(name === 'amount') {
+      setState({
+        ...state,
+        amount: parser.parseToFloat(event.target.value),
+      })
+    } else {
+      setState({
+        ...state,
+        [name]: event.target.value,
+        amount: parser.parseToFloat(state.amount),
+      });
+    }
   };
-
-  const makeRequest = async() => {
-    await api.postApplication(state)
-  }
 
   const handleCloseSendForm = () => {
     setSendApplication(false);
   }
 
   const handleOpenSendForm = () => {
+    /*
+    setState({
+      ...state,
+      amount: Number.parseFloat(state.amount),
+    })
+    */
+    console.log(state);
+    api.postApplication(state);
     setSendApplication(true);
-    makeRequest();
     hideDialog();
   }
 

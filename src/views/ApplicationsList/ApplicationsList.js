@@ -18,8 +18,6 @@ const ApplicationsList = () => {
   const classes = useStyles();
 
   const applicants = fetchApplications();
-
-  console.log(applicants)
   return (
     <div className={classes.root}>
       <ApplicationsToolbar />

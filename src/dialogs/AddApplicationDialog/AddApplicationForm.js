@@ -52,8 +52,8 @@ const AddApplicationForm = (props) => {
           value={state.clientType}
         >
           <option value="" />
-          <option value={'person'}>Klient Indywidualny</option>
-          <option value={'company'}>Firma</option>
+          <option value={'Klient Indywidualny'}>Klient Indywidualny</option>
+          <option value={'Firma'}>Firma</option>
         </Select>
       </FormControl>
       <FormControl
@@ -77,8 +77,8 @@ const AddApplicationForm = (props) => {
           value={state.loanType}
         >
           <option value="" />
-          <option value={'studentLoan'}>Studencki</option>
-          <option value={'flatLoan'}>Hipoteczny</option>
+          <option value={'studencki'}>Studencki</option>
+          <option value={'hipoteczny'}>Hipoteczny</option>
         </Select>
       </FormControl>
       <TextField
@@ -87,7 +87,9 @@ const AddApplicationForm = (props) => {
         id="amount"
         label="Kwota"
         margin="dense"
+        onChange={handleChange('amount')}
         type="number"
+        value={state.amount}
       />
       <TextField
         autoFocus
@@ -95,7 +97,9 @@ const AddApplicationForm = (props) => {
         id="firstName"
         label="Imię"
         margin="dense"
+        onChange={handleChange('firstName')}
         type="text"
+        value={state.firstName}
       />
       <TextField
         autoFocus
@@ -103,7 +107,9 @@ const AddApplicationForm = (props) => {
         id="lastName"
         label="Nazwisko"
         margin="dense"
+        onChange={handleChange('lastName')}
         type="text"
+        value={state.lastName}
       />
       <TextField
         autoFocus
@@ -111,7 +117,9 @@ const AddApplicationForm = (props) => {
         id="pesel"
         label="PESEL"
         margin="dense"
+        onChange={handleChange('pesel')}
         type="text"
+        value={state.pesel}
       />
       <div>Miejsce zamieszkania</div>
       <TextField
@@ -120,7 +128,9 @@ const AddApplicationForm = (props) => {
         id="homeStreet"
         label="ulica"
         margin="dense"
+        onChange={handleChange('homeStreet')}
         type="text"
+        value={state.homeStreet}
       />
       <TextField
         autoFocus
@@ -128,7 +138,9 @@ const AddApplicationForm = (props) => {
         id="homeCity"
         label="miasto"
         margin="dense"
+        onChange={handleChange('homeCity')}
         type="text"
+        value={state.homeCity}
       />
       <TextField
         autoFocus
@@ -136,7 +148,9 @@ const AddApplicationForm = (props) => {
         id="homePostalCode"
         label="kod pocztowy"
         margin="dense"
+        onChange={handleChange('homePostalCode')}
         type="text"
+        value={state.homePostalCode}
       />
       <div>Miejsce zameldowania</div>
       <TextField
@@ -145,7 +159,9 @@ const AddApplicationForm = (props) => {
         id="mailingStreet"
         label="ulica"
         margin="dense"
+        onChange={handleChange('mailingStreet')}
         type="text"
+        value={state.mailingStreet}
       />
       <TextField
         autoFocus
@@ -153,7 +169,9 @@ const AddApplicationForm = (props) => {
         id="mailingCity"
         label="miasto"
         margin="dense"
+        onChange={handleChange('mailingCity')}
         type="text"
+        value={state.mailingCity}
       />
       <TextField
         autoFocus
@@ -161,7 +179,9 @@ const AddApplicationForm = (props) => {
         id="mailingPostalCode"
         label="kod pocztowy"
         margin="dense"
+        onChange={handleChange('mailingPostalCode')}
         type="text"
+        value={state.mailingPostalCode}
       />
     </div>
   );
