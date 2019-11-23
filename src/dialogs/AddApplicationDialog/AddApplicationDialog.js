@@ -8,12 +8,71 @@ import {
   DialogContentText,
 } from '@material-ui/core';
 import AddApplicationForm from './AddApplicationForm';
-
+import { SentForm } from './components';
 import { PropTypes } from 'prop-types';
+import * as api from 'common/api';
+import * as parser from 'common/floatParser';
 
 const AddApplicationDialog = (props) => {
   const { actions, openedDialog } = props;
   const { hideDialog } = actions;
+
+  const [state, setState] = React.useState({
+    clientType: '',
+    loanType: '',
+    amount: '0.0',
+    firstName: '',
+    lastName: '',
+    homeStreet: '',
+    homeCity: '',
+    homePostalCode: '',
+    mailingStreet: '',
+    mailingCity: '',
+    mailingPostalCode: '',
+  });
+
+  const [sendApplication, setSendApplication] = React.useState(false);
+  const handleChange = name => event => {
+    if(name === 'amount') {
+      setState({
+        ...state,
+        amount: parser.parseToFloat(event.target.value),
+      })
+    } else {
+      setState({
+        ...state,
+        [name]: event.target.value,
+        amount: parser.parseToFloat(state.amount),
+      });
+    }
+  };
+
+  const handleCloseSendForm = () => {
+    setSendApplication(false);
+  }
+
+  const handleOpenSendForm = () => {
+    /*
+    setState({
+      ...state,
+      amount: Number.parseFloat(state.amount),
+    })
+    */
+    console.log(state);
+    api.postApplication(state);
+    setSendApplication(true);
+    hideDialog();
+  }
+
+  if(sendApplication) {
+
+    return (
+      <SentForm
+        handleClose={handleCloseSendForm}
+        isSentApplication={sendApplication}
+      />
+    );
+  }
 
   return (
     <Dialog
@@ -26,7 +85,10 @@ const AddApplicationDialog = (props) => {
         <DialogContentText>
           Formularz do składania wniosku
         </DialogContentText>
-        <AddApplicationForm/>
+        <AddApplicationForm
+          handleChange={handleChange}
+          state={state}
+        />
       </DialogContent>
       <DialogActions>
         <Button
@@ -37,7 +99,7 @@ const AddApplicationDialog = (props) => {
         </Button>
         <Button
           color="primary"
-          onClick={() => hideDialog()}
+          onClick={() => handleOpenSendForm()}
         >
         Dodaj
         </Button>

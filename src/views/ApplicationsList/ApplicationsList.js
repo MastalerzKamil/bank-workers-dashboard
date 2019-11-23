@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { ApplicationsToolbar } from 'containers'
 import { ApplicationsTable } from './components';
-import mockData from './data';
+import { fetchApplications } from 'hooks';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,8 +17,7 @@ const useStyles = makeStyles(theme => ({
 const ApplicationsList = () => {
   const classes = useStyles();
 
-  const [applicants] = useState(mockData);
-
+  const applicants = fetchApplications();
   return (
     <div className={classes.root}>
       <ApplicationsToolbar />

@@ -6,6 +6,7 @@ import {
   InputLabel,
   Select
 } from '@material-ui/core';
+import { PropTypes } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -18,25 +19,16 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const AddApplicationForm = () => {
+const AddApplicationForm = (props) => {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    clientType: '',
-    loanType: '',
-  });
+
+  const { state, handleChange} = props;
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
-
-  const handleChange = name => event => {
-    setState({
-      ...state,
-      [name]: event.target.value
-    });
-  };
   return(
     <div>
       <FormControl
@@ -60,8 +52,8 @@ const AddApplicationForm = () => {
           value={state.clientType}
         >
           <option value="" />
-          <option value={'person'}>Klient Indywidualny</option>
-          <option value={'company'}>Firma</option>
+          <option value={'Klient Indywidualny'}>Klient Indywidualny</option>
+          <option value={'Firma'}>Firma</option>
         </Select>
       </FormControl>
       <FormControl
@@ -85,8 +77,8 @@ const AddApplicationForm = () => {
           value={state.loanType}
         >
           <option value="" />
-          <option value={'studentLoan'}>Studencki</option>
-          <option value={'flatLoan'}>Hipoteczny</option>
+          <option value={'studencki'}>Studencki</option>
+          <option value={'hipoteczny'}>Hipoteczny</option>
         </Select>
       </FormControl>
       <TextField
@@ -95,7 +87,9 @@ const AddApplicationForm = () => {
         id="amount"
         label="Kwota"
         margin="dense"
+        onChange={handleChange('amount')}
         type="number"
+        value={state.amount}
       />
       <TextField
         autoFocus
@@ -103,7 +97,9 @@ const AddApplicationForm = () => {
         id="firstName"
         label="Imię"
         margin="dense"
+        onChange={handleChange('firstName')}
         type="text"
+        value={state.firstName}
       />
       <TextField
         autoFocus
@@ -111,7 +107,9 @@ const AddApplicationForm = () => {
         id="lastName"
         label="Nazwisko"
         margin="dense"
+        onChange={handleChange('lastName')}
         type="text"
+        value={state.lastName}
       />
       <TextField
         autoFocus
@@ -119,60 +117,79 @@ const AddApplicationForm = () => {
         id="pesel"
         label="PESEL"
         margin="dense"
+        onChange={handleChange('pesel')}
         type="text"
+        value={state.pesel}
       />
       <div>Miejsce zamieszkania</div>
       <TextField
         autoFocus
         fullWidth
-        id="livingStreet"
+        id="homeStreet"
         label="ulica"
         margin="dense"
+        onChange={handleChange('homeStreet')}
         type="text"
+        value={state.homeStreet}
       />
       <TextField
         autoFocus
         fullWidth
-        id="livingCity"
+        id="homeCity"
         label="miasto"
         margin="dense"
+        onChange={handleChange('homeCity')}
         type="text"
+        value={state.homeCity}
       />
       <TextField
         autoFocus
         fullWidth
-        id="livingCode"
+        id="homePostalCode"
         label="kod pocztowy"
         margin="dense"
+        onChange={handleChange('homePostalCode')}
         type="text"
+        value={state.homePostalCode}
       />
       <div>Miejsce zameldowania</div>
       <TextField
         autoFocus
         fullWidth
-        id="livingStreet"
+        id="mailingStreet"
         label="ulica"
         margin="dense"
+        onChange={handleChange('mailingStreet')}
         type="text"
+        value={state.mailingStreet}
       />
       <TextField
         autoFocus
         fullWidth
-        id="livingCity"
+        id="mailingCity"
         label="miasto"
         margin="dense"
+        onChange={handleChange('mailingCity')}
         type="text"
+        value={state.mailingCity}
       />
       <TextField
         autoFocus
         fullWidth
-        id="livingCode"
+        id="mailingPostalCode"
         label="kod pocztowy"
         margin="dense"
+        onChange={handleChange('mailingPostalCode')}
         type="text"
+        value={state.mailingPostalCode}
       />
     </div>
   );
+}
+
+AddApplicationForm.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
 }
 
 export default AddApplicationForm;
