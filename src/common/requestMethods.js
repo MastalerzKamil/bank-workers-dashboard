@@ -1,5 +1,5 @@
 
-export const apiEndpoint = 'localhost:5000';
+export const apiEndpoint = 'http://127.0.0.1:5000';
 export function post(url, body) {
   return fetch(apiEndpoint + url, {
     headers: {
@@ -19,11 +19,6 @@ export function post(url, body) {
 }
 
 export function get(url) {
-  return fetch(apiEndpoint + url, {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-  })
+  return fetch(apiEndpoint + url)
     .then((res) => res.json())
 }

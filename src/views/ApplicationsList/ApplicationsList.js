@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
 import { ApplicationsToolbar } from 'containers'
 import { ApplicationsTable } from './components';
-import * as api from 'common/api';
+import { fetchApplications } from 'hooks';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,13 +17,9 @@ const useStyles = makeStyles(theme => ({
 const ApplicationsList = () => {
   const classes = useStyles();
 
-  const [applicants, setApplicants] = useState([]);
+  const applicants = fetchApplications();
 
-  React.useEffect(async () => {
-    const fetchedApplicants = await api.getApplications();
-    setApplicants(fetchedApplicants);
-  },[applicants]);
-
+  console.log(applicants)
   return (
     <div className={classes.root}>
       <ApplicationsToolbar />
