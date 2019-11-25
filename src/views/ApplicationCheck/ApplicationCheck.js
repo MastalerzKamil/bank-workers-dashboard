@@ -6,7 +6,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import { AddExortionDialog } from 'containers';
-import mockData from './data';
+import { FetchSingleApplication } from 'hooks';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,6 +33,8 @@ const ApplicationCheck = props => {
   const { id } = match.params;
   const classes = useStyles();
 
+  const fetchedData = FetchSingleApplication({ applicationId: id });
+
   return (
     <div>
       <form
@@ -49,7 +51,7 @@ const ApplicationCheck = props => {
             }}
             label="Typ klienta"
             margin="normal"
-            value={mockData.clientType}
+            value={fetchedData.clientType}
           />
           <TextField
             className={classes.textField}
@@ -59,7 +61,7 @@ const ApplicationCheck = props => {
             }}
             label="Imię"
             margin="normal"
-            value={mockData.firstName}
+            value={fetchedData.firstName}
           />
           <TextField
             className={classes.textField}
@@ -69,7 +71,7 @@ const ApplicationCheck = props => {
             }}
             label="Nazwisko"
             margin="normal"
-            value={mockData.lastName}
+            value={fetchedData.lastName}
           />
           <TextField
             className={classes.textField}
@@ -79,7 +81,7 @@ const ApplicationCheck = props => {
             }}
             label="Kwota"
             margin="normal"
-            value={`${mockData.amount.toString()}zł`}
+            value={`${fetchedData.amount}zł`}
           />
           <TextField
             className={classes.textField}
@@ -89,28 +91,17 @@ const ApplicationCheck = props => {
             }}
             label="Adres zamieszkania"
             margin="normal"
-            value={`${mockData.homeStreet}, ${mockData.homeCity}, ${mockData.homePostalCode}`}
+            value={`${fetchedData.homeStreet}, ${fetchedData.homeCity}, ${fetchedData.homePostalCode}`}
           />
           <TextField
             className={classes.textField}
-            defaultValue="Gdańsk, ul. Wałowa 123/4, 80-123"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Adres zameldowania"
             margin="normal"
-            value={`${mockData.mailingStreet}, ${mockData.mailingCity}, ${mockData.mailingPostalCode}`}
-          />
-          <TextField
-            className={classes.textField}
-            id="standard-read-only-input"
-            InputProps={{
-              readOnly: true
-            }}
-            label="PESEL"
-            margin="normal"
-            value={mockData.pesel}
+            value={`${fetchedData.mailingStreet}, ${fetchedData.mailingCity}, ${fetchedData.mailingPostalCode}`}
           />
         </div>
         <div className={classes.buttonsContainer}>
@@ -135,7 +126,7 @@ const ApplicationCheck = props => {
           </Button>
         </div>
       </form>
-      <AddExortionDialog />
+      <AddExortionDialog applicationId={id}/>
     </div>
   );
 }

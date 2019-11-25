@@ -17,19 +17,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AddExortionForm = (props) => {
-  const { applicationId } = props // TODO use in sendBody
+  const { handleChangeTextField, state } = props
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    reason: '',
-    organ: '',
-  });
-
-  const handleChangeTextField = stateName => event => {
-    setState({
-      ...state,
-      [stateName]: event.target.value
-    });
-  };
 
   return (
     <div className={classes.container}>
@@ -42,6 +31,7 @@ const AddExortionForm = (props) => {
         margin="dense"
         onChange={handleChangeTextField('reason')}
         type="text"
+        value={state.reason}
       />
       <TextField
         autoFocus
@@ -52,6 +42,7 @@ const AddExortionForm = (props) => {
         margin="dense"
         onChange={handleChangeTextField('organ')}
         type="text"
+        value={state.authority}
       />
     </div>
   )
@@ -62,7 +53,8 @@ AddExortionForm.defaultProps = {
 }
 
 AddExortionForm.propTypes = {
-  applicationId: PropTypes.number
+  handleChangeTextField: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
 }
 
 export default AddExortionForm;

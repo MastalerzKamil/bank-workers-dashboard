@@ -15,6 +15,19 @@ const AddExortionDialog = (props) => {
   const { actions, openedDialog, applicationId } = props;
   const { hideDialog } = actions;
 
+  const [state, setState] = React.useState({
+    reason: '',
+    authority: '',
+    applicationId,
+  });
+
+  const handleChangeTextField = stateName => event => {
+    setState({
+      ...state,
+      [stateName]: event.target.value
+    });
+  };
+
   return (
     <Dialog
       aria-labelledby="form-dialog-title"
@@ -26,7 +39,10 @@ const AddExortionDialog = (props) => {
         <DialogContentText>
           Formularz do zgłoszenia wniosku na policję. Złóż go gdy wniosek podejrzany.
         </DialogContentText>
-        <AddExortionForm applicationId={applicationId}/>
+        <AddExortionForm
+          handleChangeTextField={handleChangeTextField}
+          state={state}
+        />
       </DialogContent>
       <DialogActions>
         <Button

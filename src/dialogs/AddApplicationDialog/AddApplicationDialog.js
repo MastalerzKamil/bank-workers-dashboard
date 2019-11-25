@@ -52,20 +52,12 @@ const AddApplicationDialog = (props) => {
   }
 
   const handleOpenSendForm = () => {
-    /*
-    setState({
-      ...state,
-      amount: Number.parseFloat(state.amount),
-    })
-    */
-    console.log(state);
     api.postApplication(state);
     setSendApplication(true);
     hideDialog();
   }
 
   if(sendApplication) {
-
     return (
       <SentForm
         handleClose={handleCloseSendForm}
