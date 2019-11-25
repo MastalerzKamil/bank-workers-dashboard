@@ -7,3 +7,7 @@ export function postApplication(body) {
 export function getApplications() {
   return get('/application/proposals');
 }
+
+export function getExortions() {
+  return get('/application/frauds');
+}

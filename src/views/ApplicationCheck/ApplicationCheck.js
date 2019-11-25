@@ -6,6 +6,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import { AddExortionDialog } from 'containers';
+import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -42,53 +43,53 @@ const ApplicationCheck = props => {
         <div>
           <TextField
             className={classes.textField}
-            defaultValue="Klient indywidualny"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Typ klienta"
             margin="normal"
+            value={mockData.clientType}
           />
           <TextField
             className={classes.textField}
-            defaultValue="Bernard"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Imię"
             margin="normal"
+            value={mockData.firstName}
           />
           <TextField
             className={classes.textField}
-            defaultValue="Campton"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Nazwisko"
             margin="normal"
+            value={mockData.lastName}
           />
           <TextField
             className={classes.textField}
-            defaultValue="50000zł"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Kwota"
             margin="normal"
+            value={`${mockData.amount.toString()}zł`}
           />
           <TextField
             className={classes.textField}
-            defaultValue="Gdańsk, ul. Wałowa 123/4, 80-123"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="Adres zamieszkania"
             margin="normal"
+            value={`${mockData.homeStreet}, ${mockData.homeCity}, ${mockData.homePostalCode}`}
           />
           <TextField
             className={classes.textField}
@@ -99,16 +100,17 @@ const ApplicationCheck = props => {
             }}
             label="Adres zameldowania"
             margin="normal"
+            value={`${mockData.mailingStreet}, ${mockData.mailingCity}, ${mockData.mailingPostalCode}`}
           />
           <TextField
             className={classes.textField}
-            defaultValue="12345678901"
             id="standard-read-only-input"
             InputProps={{
               readOnly: true
             }}
             label="PESEL"
             margin="normal"
+            value={mockData.pesel}
           />
         </div>
         <div className={classes.buttonsContainer}>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { ExortionsTable } from './components';
-import mockData from './data';
+import { FetchExortions } from 'hooks';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 const ExortionsList = () => {
   const classes = useStyles();
 
-  const [exortions] = useState(mockData);
+  const exortions = FetchExortions()
 
   return (
     <div className={classes.root}>
